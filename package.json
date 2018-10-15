@@ -1,0 +1,24 @@
+{
+  "name": "dogprox",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/http-proxy": "^1.16.2",
+    "http-proxy": "^1.17.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.4",
+    "@types/request-promise": "^4.1.42",
+    "typescript": "^3.1.1"
+  }
+}
