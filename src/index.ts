@@ -40,11 +40,15 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
                                .replace(/aberoth/gi, '')
 
             res.end(strBody)
-        } else if (req.url.endsWith('.js') ||
-                   req.url.endsWith('.html') ||
-                   proxyRes.headers["content-type"] == 'application/json' ||
-                   proxyRes.headers["content-type"] == 'application/javascript' ||
-                   proxyRes.headers["content-type"].startsWith('text/html')) {
+        } else if (
+            req.url.endsWith('.js') ||
+            req.url.endsWith('.html') ||
+            proxyRes.headers["content-type"] && (
+                proxyRes.headers["content-type"] == 'application/json' ||
+                proxyRes.headers["content-type"] == 'application/javascript' ||
+                proxyRes.headers["content-type"].startsWith('text/html')
+            )
+        ) {
             const strBody = body.toString()
                               .replace(/aberoth/gi, '')
             res.end(strBody)
