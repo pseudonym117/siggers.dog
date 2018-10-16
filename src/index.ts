@@ -31,15 +31,24 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
             }
         }
 
+
         if (req.url == '/') {
-            let strBody = body.toString()
-            strBody = strBody.replace(/([\s\>])Siegers/gi, '$1Siggers')
-                             .replace('Web Application Designer & Programmer', 'Dog')
-                             .replace('="sharpen">E</', '="sharpen">G</')
-                             .replace(/aberoth/gi, '')
+            const strBody = body.toString()
+                               .replace(/([\s\>])Siegers/gi, '$1Siggers')
+                               .replace('Web Application Designer & Programmer', 'Dog')
+                               .replace('="sharpen">E</', '="sharpen">G</')
+                               .replace(/aberoth/gi, '')
 
             res.end(strBody)
-        } else {
+        } else if (req.url.endsWith('.js') ||
+                   req.url.endsWith('.html') ||
+                   proxyRes.headers["content-type"] == 'application/json' ||
+                   proxyRes.headers["content-type"] == 'application/javascript' ||
+                   proxyRes.headers["content-type"].startsWith('text/html')) {
+            const strBody = body.toString()
+                              .replace(/aberoth/gi, '')
+            res.end(strBody)
+        }{
             res.end(body)
         }
     })
