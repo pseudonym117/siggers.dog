@@ -51,7 +51,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
                                .replace(/([\s\>])Siegers/gi, '$1Siggers')
                                .replace('Web Application Designer & Programmer', 'Dog')
                                .replace('="sharpen">E</', '="sharpen">G</')
-                               .replace(/<script>.*aberoth.com<\/script>/gi, '')
+                               .replace(/<script>.*aberoth.com.*<\/script>/gi, '')
 
             res.end(strBody)
         } else if (
