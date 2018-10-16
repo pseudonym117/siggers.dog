@@ -21,6 +21,13 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     proxyRes.on('data', data => {
         body = Buffer.concat([body, data])
     })
+
+    
+    if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
+        res.statusCode = 400
+        res.end()
+    }
+
     proxyRes.on('end', () => {
         for (let i = 0; i < proxyRes.rawHeaders.length; i += 2) {
             const header = proxyRes.rawHeaders[i]
@@ -30,7 +37,6 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
                 res.setHeader(header, value)
             }
         }
-
 
         if (req.url == '/') {
             const strBody = body.toString()
@@ -50,7 +56,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
             )
         ) {
             const strBody = body.toString()
-                              .replace(/aberoth/gi, '')
+                              .replace(/aberoth\.com/gi, '')
             res.end(strBody)
         }{
             res.end(body)
