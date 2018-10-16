@@ -23,8 +23,11 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     })
 
     proxyRes.on('end', () => {
-        if (body.toString().search(/aberoth/gi) != -1) {
+        let strBody = body.toString()
+        const ind = strBody.search(/aberoth/gi)
+        if (ind != -1) {
             console.log('aberoth is in "' + req.url + '"')
+            console.log(strBody.substr(ind - 20, 100))
         }
         
         if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
@@ -44,7 +47,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 
         if (req.url == '/') {
 
-            const strBody = body.toString()
+            strBody = strBody
                                .replace(/([\s\>])Siegers/gi, '$1Siggers')
                                .replace('Web Application Designer & Programmer', 'Dog')
                                .replace('="sharpen">E</', '="sharpen">G</')
