@@ -26,6 +26,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
     if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
         res.statusCode = 400
         res.end()
+        return
     }
 
     proxyRes.on('end', () => {
@@ -43,7 +44,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
                                .replace(/([\s\>])Siegers/gi, '$1Siggers')
                                .replace('Web Application Designer & Programmer', 'Dog')
                                .replace('="sharpen">E</', '="sharpen">G</')
-                               .replace(/aberoth/gi, '')
+                               .replace(/aberoth(\.com)?/gi, '')
 
             res.end(strBody)
         } else if (
