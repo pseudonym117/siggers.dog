@@ -22,7 +22,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         body = Buffer.concat([body, data])
     })
 
-    if (body.toString().search('aberoth') != -1) {
+    if (body.toString().search(/aberoth/gi) != -1) {
         console.log('aberoth is in "' + req.url + '"')
     }
     
