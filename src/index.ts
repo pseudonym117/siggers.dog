@@ -22,17 +22,17 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         body = Buffer.concat([body, data])
     })
 
-    if (body.toString().search(/aberoth/gi) != -1) {
-        console.log('aberoth is in "' + req.url + '"')
-    }
-    
-    if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
-        res.statusCode = 400
-        res.end()
-        return
-    }
-
     proxyRes.on('end', () => {
+        if (body.toString().search(/aberoth/gi) != -1) {
+            console.log('aberoth is in "' + req.url + '"')
+        }
+        
+        if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
+            res.statusCode = 400
+            res.end()
+            return
+        }
+
         for (let i = 0; i < proxyRes.rawHeaders.length; i += 2) {
             const header = proxyRes.rawHeaders[i]
             const value = proxyRes.rawHeaders[i + 1]
