@@ -27,7 +27,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         const ind = strBody.search(/aberoth/gi)
         if (ind != -1) {
             console.log('aberoth is in "' + req.url + '"')
-            console.log(strBody.substr(ind - 20, 100))
+            console.log(strBody.substr(ind - 100, 200))
         }
         
         if (proxyRes.statusCode > 300 && proxyRes.statusCode < 310) {
