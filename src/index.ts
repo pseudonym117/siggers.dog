@@ -56,7 +56,7 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
             )
         ) {
             const strBody = body.toString()
-                              .replace(/aberoth\.com/gi, '')
+                              .replace(/aberoth(\.com)?/gi, '')
             res.end(strBody)
         }{
             res.end(body)
