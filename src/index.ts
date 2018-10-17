@@ -77,6 +77,7 @@ http.createServer((req, res) => {
         res.setHeader('content-type', 'application/json')
         res.statusCode = 200
         res.end('{"health":"OK"}')
+    } else {
+        proxy.web(req, res, { secure: false })
     }
-    proxy.web(req, res, { secure: false })
 }).listen(8080)
