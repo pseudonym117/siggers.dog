@@ -52,6 +52,8 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
                                .replace('Web Application Designer & Programmer', 'Dog')
                                .replace('="sharpen">E</', '="sharpen">G</')
                                .replace(/<script>.*aberoth.com.*<\/script>/gi, '')
+                               .replace(/aberoth/gi, '')
+                               .replace(/jakesiegers\.com/gi, 'siggers.dog')
 
             res.end(strBody)
         } else if (
@@ -65,6 +67,8 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
         ) {
             const strBody = body.toString()
                               .replace(/aberoth(\.com)?/gi, '')
+                              .replace(/aberoth/gi, '')
+                              .replace(/jakesiegers\.com/gi, 'siggers.dog')
             res.end(strBody)
         }{
             res.end(body)

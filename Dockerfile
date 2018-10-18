@@ -4,6 +4,8 @@ WORKDIR /siggers.dog
 
 COPY . /siggers.dog
 RUN npm i
+RUN npm run build
 
 EXPOSE 8080
-CMD [ "npm", "run", "buildStart" ]
+
+CMD [ "npm", "run", "start" ]
