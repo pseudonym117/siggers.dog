@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/http-proxy": "^1.16.2",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "^1.18.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },
